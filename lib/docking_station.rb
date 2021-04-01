@@ -8,7 +8,7 @@ class DockingStation
   end
 
   def release_bike #assuming dock is empty
-    fail 'Sorry mate, don\'t be a dock' if @bikes.empty?
+    fail 'Sorry mate, don\'t be a dock' if empty?
       @bikes.pop
   end
 
@@ -18,9 +18,13 @@ class DockingStation
   end
 
   private
+  
+  def empty?
+    @bikes.empty?
+  end
+
   def full?
     @bikes.length >= 20
   end
-
 
 end
