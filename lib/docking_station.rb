@@ -13,8 +13,14 @@ class DockingStation
   end
 
   def dock(bike)
-    fail 'Dock off im stuffed' if @bikes.length >= 20
+    fail 'Dock off im stuffed' if full?
       @bikes << bike 
   end
+
+  private
+  def full?
+    @bikes.length >= 20
+  end
+
 
 end
