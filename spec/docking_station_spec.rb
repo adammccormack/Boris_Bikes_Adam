@@ -4,7 +4,7 @@ describe DockingStation do
 
   it { is_expected.to respond_to :release_bike }
 
-  it { is_expected.to respond_to :dock}
+  it { is_expected.to respond_to :dock }
 
 
   it "it should release a bike" do
@@ -29,6 +29,22 @@ describe DockingStation do
       expect { subject.dock(bike) }.to raise_error 'Dock off im stuffed'
     end
 
+  end
+
+  it 'should have a default capacity' do
+    expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
+  end
+
+  describe '#intitialize' do
+    it 'intitializes with a given capacity' do
+      toast = 50
+      beans = DockingStation.new(50)
+      expect (beans.capacity).to eq(toast)
+    end
+  end
+
+  it 'allows user to set capacity' do
+    expect(subject).to respond_to(:capacity)
   end
 
 end
